@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug CM7",
+      "type": "cortex-debug",
+      "request": "launch",
+      "servertype": "openocd",
+      "device": "STM32H755ZI",
+      "executable": "${workspaceFolder}/Makefile/CM7/build/h755_cm7.elf",
+      "cwd": "${workspaceFolder}",
+      "configFiles": ["board/st_nucleo_h755zi_dual.cfg"],
+      "preLaunchTask": "Build CM7",
+      "runToMain": true,
+      "svdFile": "STM32H755.svd",
+      "postRestartCommands": ["monitor reset halt"]
+    },
+    {
+      "name": "Attach CM4",
+      "type": "cortex-debug",
+      "request": "attach",
+      "servertype": "openocd",
+      "device": "STM32H755ZI",
+      "executable": "${workspaceFolder}/Makefile/CM4/build/h755_cm4.elf",
+      "cwd": "${workspaceFolder}",
+      "gdbTarget": "localhost:3334",
+      "configFiles": ["board/st_nucleo_h755zi_dual.cfg"],
+      "preLaunchTask": "Build CM4",
+      "runToMain": true,
+      "svdFile": "STM32H755.svd"
+    }
+  ]
+}
