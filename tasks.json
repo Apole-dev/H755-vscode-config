@@ -1,49 +1,42 @@
 {
   "version": "2.0.0",
   "tasks": [
+    /* ── build each core ─────────────────────────────────────────────── */
     {
       "label": "Build CM7",
       "type": "shell",
       "command": "make",
-      "options": {
-        "cwd": "${workspaceFolder}/Makefile/CM7"
-      },
-      "group": "build",
+      "options": { "cwd": "${workspaceFolder}/Makefile/CM7" },
       "problemMatcher": ["$gcc"]
     },
     {
       "label": "Build CM4",
       "type": "shell",
       "command": "make",
-      "options": {
-        "cwd": "${workspaceFolder}/Makefile/CM4"
-      },
-      "group": "build",
+      "options": { "cwd": "${workspaceFolder}/Makefile/CM4" },
       "problemMatcher": ["$gcc"]
     },
+
+    /* ── combined build (default) ────────────────────────────────────── */
     {
       "label": "Build All",
       "dependsOn": ["Build CM7", "Build CM4"],
-      "group": "build",
-      "dependsOrder": "sequence"
+      "dependsOrder": "sequence",
+      "group": { "kind": "build", "isDefault": true }
     },
+
+    /* ── flash both cores ────────────────────────────────────────────── */
     {
       "label": "Flash All",
       "type": "shell",
       "command": "openocd",
       "args": [
-        "-f",
-        "board/st_nucleo_h745zi.cfg",
-        "-c",
-        "program Makefile/CM7/build/H755_DualCore_CM7.elf verify",
-        "-c",
-        "program Makefile/CM4/build/H755_DualCore_CM4.elf verify",
-        "-c",
-        "reset run",
-        "-c",
-        "shutdown"
-      ],
-      "group": "build"
+        "-f", "board/st_nucleo_h745zi.cfg",
+        "-c", "program Makefile/CM7/build/H755_DualCore_CM7.elf verify",
+        "-c", "program Makefile/CM4/build/H755_DualCore_CM4.elf verify",
+        "-c", "reset run",
+        "-c", "shutdown"
+      ]
     }
   ]
 }
