@@ -32,8 +32,8 @@
       "command": "openocd",
       "args": [
         "-f", "board/st_nucleo_h745zi.cfg",
-        "-c", "program Makefile/CM7/build/H755_DualCore_CM7.elf verify",
-        "-c", "program Makefile/CM4/build/H755_DualCore_CM4.elf verify",
+        "-c", "program Makefile/CM7/build/${workspaceFolderBasename}_CM7.elf verify",
+        "-c", "program Makefile/CM4/build/${workspaceFolderBasename}_CM4.elf verify",
         "-c", "reset run",
         "-c", "shutdown"
       ]

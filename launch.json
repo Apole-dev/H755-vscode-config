@@ -8,7 +8,7 @@
       "servertype": "openocd",
       "device": "STM32H755ZI",
 
-      "executable": "${workspaceFolder}/Makefile/CM7/build/H755_DualCore_CM7.elf",
+      "executable": "${workspaceFolder}/Makefile/CM7/build/${workspaceFolderBasename}_CM7.elf",
       "cwd": "${workspaceFolder}",
       "configFiles": ["board/st_nucleo_h745zi.cfg"],
 
@@ -25,7 +25,7 @@
       "servertype": "openocd",
       "device": "STM32H755ZI",
 
-      "executable": "${workspaceFolder}/Makefile/CM4/build/H755_DualCore_CM4.elf",
+      "executable": "${workspaceFolder}/Makefile/CM4/build/${workspaceFolderBasename}_CM4.elf",
       "cwd": "${workspaceFolder}",
       "gdbTarget": "localhost:3334",
       "configFiles": ["board/st_nucleo_h745zi.cfg"],
